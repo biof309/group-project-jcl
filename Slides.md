@@ -2,7 +2,7 @@
 
 ###Cara, Jacob, Lorenzo
 
-## New slide
+# New slide
 
 With some stuff
 
