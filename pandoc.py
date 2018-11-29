@@ -11,7 +11,7 @@ def write_file(filename, contents):
 #write_file('2018-09-27/about.rst', output)
 
 # You can make a slidy HTML slide deck
-slides = pypandoc.convert_file('group-project-icl/slides.md', to='slidy', extra_args=['-s'])
+slides = pypandoc.convert_file('slides.md', to='slidy', extra_args=['-s'])
 
 # And specify style with a css file, e.g. https://github.com/alblaine/countess
 #slides = pypandoc.convert_file('2018-09-27/slides.md', to='slidy', extra_args=['-s', '--css=style.css'])
@@ -31,4 +31,4 @@ slides = pypandoc.convert_file('group-project-icl/slides.md', to='slidy', extra_
 # Try the moon revealjs theme
 #slides = pypandoc.convert_file('2018-09-27/slides.md', to='revealjs', extra_args=['-s', '-V', 'revealjs-url=http://lab.hakim.se/reveal-js', '-V', 'theme=moon'])
 
-write_file('group-project-icl/slides.html', slides)
+write_file('slides.html', slides)
