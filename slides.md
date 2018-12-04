@@ -1,4 +1,4 @@
-#Forrest Classification with Python
+#Forrest Cover Type Classification using SciKitLearn
 
 ###Cara, Jacob, Lorenzo
 
