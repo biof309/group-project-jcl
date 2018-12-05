@@ -1,6 +1,8 @@
 final-project-template
 ==============================
 
+[slides](https://biof309.github.io/group-project-jcl/slides.html)
+
 A template I recommend for final projects. Feel free to modify as needed!
 Based on Cookiecutter Data Science:
 
