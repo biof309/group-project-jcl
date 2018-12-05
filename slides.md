@@ -1,6 +1,6 @@
-#Forrest Classification with Python
-
-###Cara, Jacob, Lorenzo
+% Forrest Cover Type Classification using SciKitLearn
+% Cara, Jacob, Lorenzo
+% December 11, 2018
 
 # New slide
 
