@@ -23,8 +23,7 @@ Questions?
 
 # Adding an image
 
-![Tree Pic](https://www.google.com/search?q=forest+cover+type+picture&newwindow=1&source=lnms&tbm=isch&sa=X&ved=0ahUKEwi7gbDSp4zfAhUqSN8KHWp6BZ8Q_AUIDigB&biw=1920&bih=938#imgrc=JuiN1UXwmkF1jM:)
-
+![Tree Pic](http://www.mast-producing-trees.org/wp-content/uploads/2009/11/oak-hickory.jpg)
 # Here is a slide with some code on it!!
 
 ```python
