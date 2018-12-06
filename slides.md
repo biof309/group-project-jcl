@@ -27,3 +27,7 @@ Trees
 
 Questions?
 
+# Adding an image
+
+![Tree Pic](pyhton_project.jpg)
+
