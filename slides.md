@@ -24,6 +24,7 @@ Questions?
 # Adding an image
 
 ![Tree Pic](http://www.mast-producing-trees.org/wp-content/uploads/2009/11/oak-hickory.jpg)
+
 # Here is a slide with some code on it!!
 
 ```python
