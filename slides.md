@@ -25,8 +25,8 @@ Questions?
 
 ![Tree Pic](http://www.mast-producing-trees.org/wp-content/uploads/2009/11/oak-hickory.jpg)
 
-# Here is a slide with some code on it!
 
+# Here is a slide with some code on it!
 ```python
 # get a list of all of the letters in the alphabet 
 [chr(65+i) for i in range(26)] #uppercase      
