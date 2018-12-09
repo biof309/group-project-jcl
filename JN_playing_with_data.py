@@ -7,7 +7,7 @@ import matplotlib as plt
 
 df.head()
 df.info()
-
+df.describe()
 '''
 cover type is what were trying to predict
 we can use other variables that we choose to predict cover type
@@ -85,9 +85,9 @@ the problem is that I dont know how to reshape the data properly so the tests fa
 '''
 
 
-X = df['Cover_Type']
+y = df['Cover_Type']
 
-y = df['Elevation']
+X = df['Elevation']
 
 # Import necessary modules
 from sklearn.linear_model import ElasticNet
@@ -96,7 +96,7 @@ from sklearn.model_selection import GridSearchCV, train_test_split
 
 
 # Create train and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=21)
 
 # Create the hyperparameter grid
 l1_space = np.linspace(0, 1, 30)
