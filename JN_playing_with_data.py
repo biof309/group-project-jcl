@@ -76,7 +76,7 @@ y_pred = reg.predict(prediction_space)
 print(reg.score(X, y))
 
 # Plot regression line
-plt.plot(prediction_space, y_pred, color='black', linewidth=3)
+pd.plt.plot(prediction_space, y_pred, color='black', linewidth=3)
 plt.show()
 
 '''
@@ -85,9 +85,9 @@ the problem is that I dont know how to reshape the data properly so the tests fa
 '''
 
 
-y = df['Cover_Type']
+y = df[['Cover_Type']]
 
-X = df['Elevation']
+X = df[['Elevation']]
 
 # Import necessary modules
 from sklearn.linear_model import ElasticNet
@@ -118,3 +118,27 @@ mse = mean_squared_error(y_test, y_pred)
 print("Tuned ElasticNet l1 ratio: {}".format(gm_cv.best_params_))
 print("Tuned ElasticNet R squared: {}".format(r2))
 print("Tuned ElasticNet MSE: {}".format(mse))
+
+
+#building a rnadom forest:
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import metrics
+df = pd.read_csv('train.csv')
+
+df.info()
+df.copy()
+x=df[['Elevation', 'Id', 'Aspect', 'Slope', 'Horizontal_Distance_To_Hydrology', 'Vertical_Distance_To_Hydrology', 'Hillshade_9am', 'Hillshade_Noon', 'Hillshade_3pm']]
+y=df['Cover_Type']
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.4, random_state=24)
+rfc = RandomForestClassifier(n_estimators=1000, max_depth=100, class_weight='balanced')
+rfc.fit(x_train, y_train)
+y_pred = rfc.predict(x_test)
+rf_accuracy = accuracy_score(y_test, y_pred)
+
+rf_accuracy
