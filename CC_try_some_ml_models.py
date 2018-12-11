@@ -22,7 +22,7 @@ x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_
 # specify models
 lr = LogisticRegression()
 rf = RandomForestClassifier(n_estimators=1000, max_depth=30, class_weight='balanced')
-sv = svm.SVC(kernel='l')
+sv = svm.SVC(kernel='rbf')
 
 # fit models
 lr.fit(x_train, y_train)
@@ -42,5 +42,3 @@ sv_accuracy = accuracy_score(y_test, sv_pred)
 lr_accuracy # 67%
 rf_accuracy # 86%
 sv_accuracy # 14% !!!
-
-# check distribution of y in test set...
