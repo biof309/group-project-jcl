@@ -14,13 +14,13 @@ Decided on classification on forest cover type
 
 # Task
 
-Predict forest cover type
+% Predict forest cover type
 
-- Classify the predominant kind of tree cover
+Classify the predominant kind of tree cover
 
-- Actual forest cover type for a 30x30 meter cell was determined by US Forest Service
+Actual forest cover type for a 30x30 meter cell was determined by US Forest Service
 
-- Independent variables obtained from US Geological Survey and USFS
+Independent variables obtained from US Geological Survey and USFS
 
 # Importance
 
@@ -30,26 +30,35 @@ Designing ways to predict forest cover type can help for future forest surveys
 
 Forests are an important natural resource
 
-- Play an important role in sustaining geochemical and bioclimatic processes
+Play an important role in sustaining geochemical and bioclimatic processes
 
 Knowing the most important variables in predicting cover type can lead to more efficient surveying
 
 # Data
 
-56 total variables
+% 56 total variables
 
-- ID
-- Slope
-- Elevation
-- Aspect
-- Slope
-- Horizontal distance to hydrology
-- Vertical distance to hydrology
-- Hillshade at different times of day
-- 4 different wilderness areas
-- 40 different soil types
+ID
 
-15120 rows of data
+Slope
+
+Elevation
+
+Aspect
+
+Slope
+
+Horizontal distance to hydrology
+
+Vertical distance to hydrology
+
+Hillshade at different times of day
+
+4 different wilderness areas
+
+40 different soil types
+
+% 15120 rows of data
 
 # Adding an image
 
