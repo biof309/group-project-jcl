@@ -133,10 +133,43 @@ Cara, Jacob, Lorenzo
 <li>40 different soil types</li>
 </ul>
 <p>15120 rows of data</p>
-<div class="figure">
-<img src="https://pixnio.com/free-images/2016/06/14/forest-hillside-725x483.jpg" alt="google images" />
-<p class="caption">google images</p>
 </div>
+<div id="elevation-differences" class="slide section level1">
+<h1>Elevation differences</h1>
+<div class="figure">
+<img src="https://pixnio.com/free-images/2016/06/14/forest-hillside-725x483.jpg" alt="Google Images" />
+<p class="caption">Google Images</p>
+</div>
+</div>
+<div id="aspect-and-hillshade" class="slide section level1">
+<h1>Aspect and Hillshade</h1>
+<div class="figure">
+<img src="https://media.mnn.com/assets/images/2015/08/pine-creek-gorge-pa.jpg.838x0_q80.jpg" alt="Google Images" />
+<p class="caption">Google Images</p>
+</div>
+</div>
+<div id="exploratory-analysis" class="slide section level1">
+<h1>Exploratory Analysis</h1>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Imported pandas and investigated the data </span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="im">import</span> pandas <span class="im">as</span> pd</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">df <span class="op">=</span> pd.read_csv(<span class="st">&#39;train.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">df.head()</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">df.info()</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">df.describe()</a></code></pre></div>
+<p>Learned basics about the data</p>
+</div>
+<div id="exploratory-analysis-1" class="slide section level1">
+<h1>Exploratory Analysis</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="im">import</span> seaborn <span class="im">as</span> sns</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">df1 <span class="op">=</span> df[[<span class="st">&#39;Elevation&#39;</span>, <span class="st">&#39;Aspect&#39;</span>, <span class="st">&#39;Slope&#39;</span>, <span class="st">&#39;Horizontal_Distance_To_Hydrology&#39;</span>,</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">          <span class="st">&#39;Vertical_Distance_To_Hydrology&#39;</span>, <span class="st">&#39;Horizontal_Distance_To_Roadways&#39;</span>,</a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">          <span class="st">&#39;Hillshade_9am&#39;</span>, <span class="st">&#39;Hillshade_Noon&#39;</span>, <span class="st">&#39;Hillshade_3pm&#39;</span>, <span class="st">&#39;Horizontal_Distance_To_Fire_Points&#39;</span>,</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">          <span class="st">&#39;Wilderness_Area1&#39;</span>, <span class="st">&#39;Wilderness_Area2&#39;</span>, <span class="st">&#39;Wilderness_Area3&#39;</span>, <span class="st">&#39;Wilderness_Area4&#39;</span>]]</a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">sns.pairplot(df1)</a></code></pre></div>
 </div>
 <div id="adding-an-image" class="slide section level1">
 <h1>Adding an image</h1>
@@ -147,9 +180,9 @@ Cara, Jacob, Lorenzo
 </div>
 <div id="here-is-a-slide-with-some-code-on-it" class="slide section level1">
 <h1>Here is a slide with some code on it!</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># get a list of all of the letters in the alphabet </span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2">[<span class="bu">chr</span>(<span class="dv">65</span><span class="op">+</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">26</span>)] <span class="co">#uppercase      </span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">[<span class="bu">chr</span>(<span class="dv">97</span><span class="op">+</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">26</span>)] <span class="co">#lowercase</span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># get a list of all of the letters in the alphabet </span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">[<span class="bu">chr</span>(<span class="dv">65</span><span class="op">+</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">26</span>)] <span class="co">#uppercase      </span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">[<span class="bu">chr</span>(<span class="dv">97</span><span class="op">+</span>i) <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">26</span>)] <span class="co">#lowercase</span></a></code></pre></div>
 </div>
 </body>
 </html>

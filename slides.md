@@ -51,7 +51,44 @@ Knowing the most important variables in predicting cover type can lead to more e
 
 15120 rows of data
 
-![google images](https://pixnio.com/free-images/2016/06/14/forest-hillside-725x483.jpg)
+# Elevation differences
+
+![Google Images](https://pixnio.com/free-images/2016/06/14/forest-hillside-725x483.jpg)
+
+# Aspect and Hillshade
+
+![Google Images](https://media.mnn.com/assets/images/2015/08/pine-creek-gorge-pa.jpg.838x0_q80.jpg)
+
+# Exploratory Analysis
+
+```python
+# Imported pandas and investigated the data 
+import pandas as pd
+
+df = pd.read_csv('train.csv')
+
+df.head()
+df.info()
+df.describe()
+```
+Learned basics about the data
+
+# Exploratory Analysis
+
+```python
+import seaborn as sns
+
+df1 = df[['Elevation', 'Aspect', 'Slope', 'Horizontal_Distance_To_Hydrology',
+          'Vertical_Distance_To_Hydrology', 'Horizontal_Distance_To_Roadways',
+          'Hillshade_9am', 'Hillshade_Noon', 'Hillshade_3pm', 'Horizontal_Distance_To_Fire_Points',
+          'Wilderness_Area1', 'Wilderness_Area2', 'Wilderness_Area3', 'Wilderness_Area4']]
+
+sns.pairplot(df1)
+
+```
+
+
+
 
 
 # Adding an image
