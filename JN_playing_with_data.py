@@ -132,6 +132,7 @@ df = pd.read_csv('train.csv')
 
 df.info()
 df.copy()
+df.describe()
 x=df[['Elevation', 'Id', 'Aspect', 'Slope', 'Horizontal_Distance_To_Hydrology', 'Vertical_Distance_To_Hydrology', 'Hillshade_9am', 'Hillshade_Noon', 'Hillshade_3pm']]
 y=df['Cover_Type']
 
