@@ -51,6 +51,9 @@ Knowing the most important variables in predicting cover type can lead to more e
 
 15120 rows of data
 
+![google images](https://pixnio.com/free-images/2016/06/14/forest-hillside-725x483.jpg)
+
+
 # Adding an image
 
 ![Tree Pic](http://www.mast-producing-trees.org/wp-content/uploads/2009/11/oak-hickory.jpg)
