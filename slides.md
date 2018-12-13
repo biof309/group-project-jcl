@@ -101,7 +101,7 @@ Decided to use SciKitLearn
 
 Supervised learning project
 
-Wanted to try multiple different classification models as this is a 
+Wanted to try multiple different classification models 
 
 Logistic regression, random forest, support vector machine, k nearest neighbor
 
