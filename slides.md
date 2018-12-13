@@ -97,7 +97,7 @@ sns.pairplot(df1)
 
 # Machine Learning with SciKitLearn
 
-Decided to try to use SciKitLearn
+Decided to use SciKitLearn
 
 Wanted to try multiple different classification models as this is a supervised learning project
 
