@@ -143,3 +143,10 @@ y_pred = rfc.predict(x_test)
 rf_accuracy = accuracy_score(y_test, y_pred)
 
 rf_accuracy
+
+import numpy as np
+
+ct = df[['Cover_Type']]
+elevation = df[['Elevation']]
+corr_1 = np.corrcoef(ct, elevation)
+corr_1

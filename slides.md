@@ -87,18 +87,18 @@ sns.pairplot(df1)
 
 ```
 
+NEED TO ADD THE GRAPHS HERE BUT IDK HOW
+
+
+# Some correlations and violin plots
 
 
 
-
-# Adding an image
-
-![Tree Pic](http://www.mast-producing-trees.org/wp-content/uploads/2009/11/oak-hickory.jpg)
+![Violin Plot 1](Figure_1.png)
 
 
-# Here is a slide with some code on it!
-```python
-# get a list of all of the letters in the alphabet 
-[chr(65+i) for i in range(26)] #uppercase      
-[chr(97+i) for i in range(26)] #lowercase
-```
+
+# Machine Learning with SciKitLearn
+
+Decided to try to use SciKitLearn
+
