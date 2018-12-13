@@ -159,15 +159,15 @@ sv_accuracy
 
 Logistic Regression Accuracy Score: 
 
-Out[73]: 0.9404761904761905
+- 0.9404761904761905
 
 Random Forest Accuracy Score:
 
-Out[74]: 0.9971340388007055
+- 0.9971340388007055
 
 Support Vector Machine Accuracy Score:
 
-Out[75]: 0.13734567901234568
+- 0.13734567901234568
 
 # Deeper Into a Model
 
@@ -192,6 +192,21 @@ rf_accuracy
 
 New Accuracy Score with 9 variables:
 
-Out[97]: 0.7908399470899471
+- 0.7908399470899471
 
 # Next Steps
+
+Still have to troubleshoot and hone our models
+
+Try different variables
+
+- Use soil types alone
+- Try combinations of variables
+
+Add confusion matrix
+
+Need to use the test set on Kaggle and see how well our model preforms!
+
+# Questions?
+
+Thank you!
