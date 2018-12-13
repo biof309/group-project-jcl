@@ -1,6 +1,6 @@
 % Forrest Cover Type Classification using SciKitLearn
 % Cara, Jacob, Lorenzo
-% December 13, 2018
+% December 11, 2018
 
 # Deciding on a project
 
@@ -87,126 +87,20 @@ sns.pairplot(df1)
 
 ```
 
-NEED TO ADD THE GRAPHS HERE BUT IDK HOW
-
-
-# Some correlations and violin plots
+![](aspect_plot.png)
 
 
 
-![Violin Plot 1](Figure_1.png)
 
 
+# Adding an image
 
-# Machine Learning with SciKitLearn
+![Tree Pic](http://www.mast-producing-trees.org/wp-content/uploads/2009/11/oak-hickory.jpg)
 
-Decided to try to use SciKitLearn
 
-Wanted to try multiple different classification models as this is a supervised learning project
-
-Logistic regression, random forrest, support vector machine, k nearest neighbor
-
-# Importing Necessary Packages
+# Here is a slide with some code on it!
 ```python
-import pandas as pd
-import matplotlib.pyplot as plt
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix, accuracy_score
-from sklearn.ensemble import RandomForestClassifier
-from sklearn import svm
+# get a list of all of the letters in the alphabet 
+[chr(65+i) for i in range(26)] #uppercase      
+[chr(97+i) for i in range(26)] #lowercase
 ```
-
-# Testing Multiple Models
-```python
-df = pd.read_csv('train.csv')
-x = df.copy()
-x = x.drop('Cover_Type', axis = 1)
-x = x.drop('Elevation', axis = 1)
-x = x.drop('Elevation', axis = 1)
-
-y = df['Cover_Type']
-
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=21)
-
-
-# specify models
-lr = LogisticRegression()
-rf = RandomForestClassifier(n_estimators=1000, max_depth=30, class_weight='balanced')
-sv = svm.SVC(kernel='rbf')
-
-# fit models
-lr.fit(x_train, y_train)
-rf.fit(x_train, y_train)
-sv.fit(x_train, y_train)
-
-# predict test set labels
-lr_pred = lr.predict(x_test)
-rf_pred = rf.predict(x_test)
-sv_pred = sv.predict(x_test)
-
-# evaluate model accuracies
-lr_accuracy = accuracy_score(y_test, lr_pred)
-rf_accuracy = accuracy_score(y_test, rf_pred)
-sv_accuracy = accuracy_score(y_test, sv_pred)
-
-lr_accuracy 
-rf_accuracy 
-sv_accuracy 
-```
-
-# Results
-
-Logistic Regression Accuracy Score: 
-
-- 0.9404761904761905
-
-Random Forest Accuracy Score:
-
-- 0.9971340388007055
-
-Support Vector Machine Accuracy Score:
-
-- 0.13734567901234568
-
-# Deeper Into a Model
-
-Random Forest!
-
-Added other variables to the model:
-
-```python
-df = pd.read_csv('train.csv')
-
-x = df[['Elevation', 'Id', 'Aspect', 'Slope', 'Horizontal_Distance_To_Hydrology', 'Vertical_Distance_To_Hydrology', 'Hillshade_9am', 'Hillshade_Noon', 'Hillshade_3pm']]
-y = df['Cover_Type']
-
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.4, random_state=24)
-rfc = RandomForestClassifier(n_estimators=1000, max_depth=100, class_weight='balanced')
-rfc.fit(x_train, y_train)
-y_pred = rfc.predict(x_test)
-rf_accuracy = accuracy_score(y_test, y_pred)
-
-rf_accuracy
-```
-
-New Accuracy Score with 9 variables:
-
-- 0.7908399470899471
-
-# Next Steps
-
-Still have to troubleshoot and hone our models
-
-Try different variables
-
-- Use soil types alone
-- Try combinations of variables
-
-Add confusion matrix
-
-Need to use the test set on Kaggle and see how well our model preforms!
-
-# Questions?
-
-Thank you!
