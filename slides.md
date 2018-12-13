@@ -95,11 +95,13 @@ sns.pairplot(df1)
 
 
 
-# Machine Learning with SciKitLearn
+# Machine Learning 
 
 Decided to use SciKitLearn
 
-Wanted to try multiple different classification models as this is a supervised learning project
+Supervised learning project
+
+Wanted to try multiple different classification models as this is a 
 
 Logistic regression, random forest, support vector machine, k nearest neighbor
 
