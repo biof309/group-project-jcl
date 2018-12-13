@@ -12,7 +12,7 @@ df.info()
 
 x = df.copy()
 x = x.drop('Cover_Type', axis = 1)
-x = x.drop('Elevation', axis = 1)
+x = x.drop('Id', axis = 1)
 
 y = df['Cover_Type']
 

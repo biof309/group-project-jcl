@@ -1,4 +1,4 @@
-% Forrest Cover Type Classification using SciKitLearn
+% Forest Cover Type Classification using SciKitLearn
 % Cara, Jacob, Lorenzo
 % December 13, 2018
 
@@ -87,14 +87,11 @@ sns.pairplot(df1)
 
 ```
 
-NEED TO ADD THE GRAPHS HERE BUT IDK HOW
-
-
 # Some correlations and violin plots
 
 
 
-![Violin Plot 1](Figure_1.png)
+![Violin Plot 1](C:\Users\Jacob\PycharmProjects\group-project-jcl\src\visualization\Figure_1.png)
 
 
 
@@ -104,7 +101,7 @@ Decided to try to use SciKitLearn
 
 Wanted to try multiple different classification models as this is a supervised learning project
 
-Logistic regression, random forrest, support vector machine, k nearest neighbor
+Logistic regression, random forest, support vector machine, k nearest neighbor
 
 # Importing Necessary Packages
 ```python
@@ -122,8 +119,7 @@ from sklearn import svm
 df = pd.read_csv('train.csv')
 x = df.copy()
 x = x.drop('Cover_Type', axis = 1)
-x = x.drop('Elevation', axis = 1)
-x = x.drop('Elevation', axis = 1)
+x = x.drop('Id', axis = 1)
 
 y = df['Cover_Type']
 
@@ -159,26 +155,26 @@ sv_accuracy
 
 Logistic Regression Accuracy Score: 
 
-- 0.9404761904761905
+- 0.6761463844797179
 
 Random Forest Accuracy Score:
 
-- 0.9971340388007055
+- 0.859347442680776
 
 Support Vector Machine Accuracy Score:
 
 - 0.13734567901234568
 
-# Deeper Into a Model
+# Testing a Model with Select Variables
 
 Random Forest!
 
-Added other variables to the model:
+Changed variables in the model:
 
 ```python
 df = pd.read_csv('train.csv')
 
-x = df[['Elevation', 'Id', 'Aspect', 'Slope', 'Horizontal_Distance_To_Hydrology', 'Vertical_Distance_To_Hydrology', 'Hillshade_9am', 'Hillshade_Noon', 'Hillshade_3pm']]
+x = df[['Elevation', 'Aspect', 'Slope', 'Horizontal_Distance_To_Hydrology', 'Vertical_Distance_To_Hydrology', 'Hillshade_9am', 'Hillshade_Noon', 'Hillshade_3pm']]
 y = df['Cover_Type']
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.4, random_state=24)
@@ -190,9 +186,11 @@ rf_accuracy = accuracy_score(y_test, y_pred)
 rf_accuracy
 ```
 
-New Accuracy Score with 9 variables:
+New Accuracy Score with only 8 variables:
 
 - 0.7908399470899471
+
+Not as good of a model!
 
 # Next Steps
 
@@ -200,10 +198,9 @@ Still have to troubleshoot and hone our models
 
 Try different variables
 
-- Use soil types alone
-- Try combinations of variables
+Try combinations of variables
 
-Add confusion matrix
+Generate confusion matrix
 
 Need to use the test set on Kaggle and see how well our model preforms!
 
