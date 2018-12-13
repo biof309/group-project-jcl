@@ -7,7 +7,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Cara, Jacob, Lorenzo" />
-  <meta name="date" content="2018-12-11" />
+  <meta name="date" content="2018-12-13" />
   <title>Forrest Cover Type Classification using SciKitLearn</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
@@ -89,7 +89,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <p class="author">
 Cara, Jacob, Lorenzo
   </p>
-  <p class="date">December 11, 2018</p>
+  <p class="date">December 13, 2018</p>
 </div>
 <div id="deciding-on-a-project" class="slide section level1">
 <h1>Deciding on a project</h1>
@@ -185,8 +185,8 @@ Cara, Jacob, Lorenzo
 <p>Wanted to try multiple different classification models as this is a supervised learning project</p>
 <p>Logistic regression, random forrest, support vector machine, k nearest neighbor</p>
 </div>
-<div id="start-by-importing-all-of-the-necessary-packages" class="slide section level1">
-<h1>Start by importing all of the necessary packages</h1>
+<div id="importing-necessary-packages" class="slide section level1">
+<h1>Importing Necessary Packages</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="im">import</span> pandas <span class="im">as</span> pd</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</a>
@@ -195,8 +195,8 @@ Cara, Jacob, Lorenzo
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</a>
 <a class="sourceLine" id="cb3-7" data-line-number="7"><span class="im">from</span> sklearn <span class="im">import</span> svm</a></code></pre></div>
 </div>
-<div id="next-test-multiple-models" class="slide section level1">
-<h1>Next test multiple models</h1>
+<div id="testing-multiple-models" class="slide section level1">
+<h1>Testing Multiple Models</h1>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1">df <span class="op">=</span> pd.read_csv(<span class="st">&#39;train.csv&#39;</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">x <span class="op">=</span> df.copy()</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">x <span class="op">=</span> x.drop(<span class="st">&#39;Cover_Type&#39;</span>, axis <span class="op">=</span> <span class="dv">1</span>)</a>
@@ -238,7 +238,30 @@ Cara, Jacob, Lorenzo
 <p>Out[73]: 0.9404761904761905</p>
 <p>Random Forest Accuracy Score:</p>
 <p>Out[74]: 0.9971340388007055</p>
-<p>Support Vector Machine Accuracy Score: Out[75]: 0.13734567901234568</p>
+<p>Support Vector Machine Accuracy Score:</p>
+<p>Out[75]: 0.13734567901234568</p>
+</div>
+<div id="deeper-into-a-model" class="slide section level1">
+<h1>Deeper Into a Model</h1>
+<p>Random Forest!</p>
+<p>Added other variables to the model:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1">df <span class="op">=</span> pd.read_csv(<span class="st">&#39;train.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">x <span class="op">=</span> df[[<span class="st">&#39;Elevation&#39;</span>, <span class="st">&#39;Id&#39;</span>, <span class="st">&#39;Aspect&#39;</span>, <span class="st">&#39;Slope&#39;</span>, <span class="st">&#39;Horizontal_Distance_To_Hydrology&#39;</span>, <span class="st">&#39;Vertical_Distance_To_Hydrology&#39;</span>, <span class="st">&#39;Hillshade_9am&#39;</span>, <span class="st">&#39;Hillshade_Noon&#39;</span>, <span class="st">&#39;Hillshade_3pm&#39;</span>]]</a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">y <span class="op">=</span> df[<span class="st">&#39;Cover_Type&#39;</span>]</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, test_size<span class="op">=</span><span class="fl">0.4</span>, random_state<span class="op">=</span><span class="dv">24</span>)</a>
+<a class="sourceLine" id="cb5-7" data-line-number="7">rfc <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_depth<span class="op">=</span><span class="dv">100</span>, class_weight<span class="op">=</span><span class="st">&#39;balanced&#39;</span>)</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">rfc.fit(x_train, y_train)</a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">y_pred <span class="op">=</span> rfc.predict(x_test)</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">rf_accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</a>
+<a class="sourceLine" id="cb5-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">rf_accuracy</a></code></pre></div>
+<p>New Accuracy Score with 9 variables:</p>
+<p>Out[97]: 0.7908399470899471</p>
+</div>
+<div id="next-steps" class="slide section level1">
+<h1>Next Steps</h1>
 </div>
 </body>
 </html>

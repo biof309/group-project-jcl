@@ -1,6 +1,6 @@
 % Forrest Cover Type Classification using SciKitLearn
 % Cara, Jacob, Lorenzo
-% December 11, 2018
+% December 13, 2018
 
 # Deciding on a project
 
@@ -106,7 +106,7 @@ Wanted to try multiple different classification models as this is a supervised l
 
 Logistic regression, random forrest, support vector machine, k nearest neighbor
 
-# Start by importing all of the necessary packages
+# Importing Necessary Packages
 ```python
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -117,7 +117,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn import svm
 ```
 
-# Next test multiple models
+# Testing Multiple Models
 ```python
 df = pd.read_csv('train.csv')
 x = df.copy()
@@ -166,4 +166,32 @@ Random Forest Accuracy Score:
 Out[74]: 0.9971340388007055
 
 Support Vector Machine Accuracy Score:
+
 Out[75]: 0.13734567901234568
+
+# Deeper Into a Model
+
+Random Forest!
+
+Added other variables to the model:
+
+```python
+df = pd.read_csv('train.csv')
+
+x = df[['Elevation', 'Id', 'Aspect', 'Slope', 'Horizontal_Distance_To_Hydrology', 'Vertical_Distance_To_Hydrology', 'Hillshade_9am', 'Hillshade_Noon', 'Hillshade_3pm']]
+y = df['Cover_Type']
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.4, random_state=24)
+rfc = RandomForestClassifier(n_estimators=1000, max_depth=100, class_weight='balanced')
+rfc.fit(x_train, y_train)
+y_pred = rfc.predict(x_test)
+rf_accuracy = accuracy_score(y_test, y_pred)
+
+rf_accuracy
+```
+
+New Accuracy Score with 9 variables:
+
+Out[97]: 0.7908399470899471
+
+# Next Steps
