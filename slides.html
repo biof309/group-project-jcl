@@ -8,7 +8,7 @@
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Cara, Jacob, Lorenzo" />
   <meta name="date" content="2018-12-13" />
-  <title>Forrest Cover Type Classification using SciKitLearn</title>
+  <title>Forest Cover Type Classification using SciKitLearn</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -85,7 +85,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </head>
 <body>
 <div class="slide titlepage">
-  <h1 class="title">Forrest Cover Type Classification using SciKitLearn</h1>
+  <h1 class="title">Forest Cover Type Classification using SciKitLearn</h1>
   <p class="author">
 Cara, Jacob, Lorenzo
   </p>
@@ -170,20 +170,20 @@ Cara, Jacob, Lorenzo
 <a class="sourceLine" id="cb2-6" data-line-number="6">          <span class="st">&#39;Wilderness_Area1&#39;</span>, <span class="st">&#39;Wilderness_Area2&#39;</span>, <span class="st">&#39;Wilderness_Area3&#39;</span>, <span class="st">&#39;Wilderness_Area4&#39;</span>]]</a>
 <a class="sourceLine" id="cb2-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb2-8" data-line-number="8">sns.pairplot(df1)</a></code></pre></div>
-<p>NEED TO ADD THE GRAPHS HERE BUT IDK HOW</p>
 </div>
 <div id="some-correlations-and-violin-plots" class="slide section level1">
 <h1>Some correlations and violin plots</h1>
 <div class="figure">
-<img src="Figure_1.png" alt="Violin Plot 1" />
+<img src="C:\Users\Jacob\PycharmProjects\group-project-jcl\src\visualization\Figure_1.png" alt="Violin Plot 1" />
 <p class="caption">Violin Plot 1</p>
 </div>
 </div>
-<div id="machine-learning-with-scikitlearn" class="slide section level1">
-<h1>Machine Learning with SciKitLearn</h1>
-<p>Decided to try to use SciKitLearn</p>
-<p>Wanted to try multiple different classification models as this is a supervised learning project</p>
-<p>Logistic regression, random forrest, support vector machine, k nearest neighbor</p>
+<div id="machine-learning" class="slide section level1">
+<h1>Machine Learning</h1>
+<p>Decided to use SciKitLearn</p>
+<p>Supervised learning project</p>
+<p>Wanted to try multiple different classification models</p>
+<p>Logistic regression, random forest, support vector machine, k nearest neighbor</p>
 </div>
 <div id="importing-necessary-packages" class="slide section level1">
 <h1>Importing Necessary Packages</h1>
@@ -200,60 +200,59 @@ Cara, Jacob, Lorenzo
 <div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1">df <span class="op">=</span> pd.read_csv(<span class="st">&#39;train.csv&#39;</span>)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2">x <span class="op">=</span> df.copy()</a>
 <a class="sourceLine" id="cb4-3" data-line-number="3">x <span class="op">=</span> x.drop(<span class="st">&#39;Cover_Type&#39;</span>, axis <span class="op">=</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">x <span class="op">=</span> x.drop(<span class="st">&#39;Elevation&#39;</span>, axis <span class="op">=</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb4-5" data-line-number="5">x <span class="op">=</span> x.drop(<span class="st">&#39;Elevation&#39;</span>, axis <span class="op">=</span> <span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7">y <span class="op">=</span> df[<span class="st">&#39;Cover_Type&#39;</span>]</a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">21</span>)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">x <span class="op">=</span> x.drop(<span class="st">&#39;Id&#39;</span>, axis <span class="op">=</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">y <span class="op">=</span> df[<span class="st">&#39;Cover_Type&#39;</span>]</a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">21</span>)</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"></a>
 <a class="sourceLine" id="cb4-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb4-11" data-line-number="11"></a>
-<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co"># specify models</span></a>
-<a class="sourceLine" id="cb4-13" data-line-number="13">lr <span class="op">=</span> LogisticRegression()</a>
-<a class="sourceLine" id="cb4-14" data-line-number="14">rf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_depth<span class="op">=</span><span class="dv">30</span>, class_weight<span class="op">=</span><span class="st">&#39;balanced&#39;</span>)</a>
-<a class="sourceLine" id="cb4-15" data-line-number="15">sv <span class="op">=</span> svm.SVC(kernel<span class="op">=</span><span class="st">&#39;rbf&#39;</span>)</a>
-<a class="sourceLine" id="cb4-16" data-line-number="16"></a>
-<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co"># fit models</span></a>
-<a class="sourceLine" id="cb4-18" data-line-number="18">lr.fit(x_train, y_train)</a>
-<a class="sourceLine" id="cb4-19" data-line-number="19">rf.fit(x_train, y_train)</a>
-<a class="sourceLine" id="cb4-20" data-line-number="20">sv.fit(x_train, y_train)</a>
-<a class="sourceLine" id="cb4-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co"># predict test set labels</span></a>
-<a class="sourceLine" id="cb4-23" data-line-number="23">lr_pred <span class="op">=</span> lr.predict(x_test)</a>
-<a class="sourceLine" id="cb4-24" data-line-number="24">rf_pred <span class="op">=</span> rf.predict(x_test)</a>
-<a class="sourceLine" id="cb4-25" data-line-number="25">sv_pred <span class="op">=</span> sv.predict(x_test)</a>
-<a class="sourceLine" id="cb4-26" data-line-number="26"></a>
-<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co"># evaluate model accuracies</span></a>
-<a class="sourceLine" id="cb4-28" data-line-number="28">lr_accuracy <span class="op">=</span> accuracy_score(y_test, lr_pred)</a>
-<a class="sourceLine" id="cb4-29" data-line-number="29">rf_accuracy <span class="op">=</span> accuracy_score(y_test, rf_pred)</a>
-<a class="sourceLine" id="cb4-30" data-line-number="30">sv_accuracy <span class="op">=</span> accuracy_score(y_test, sv_pred)</a>
-<a class="sourceLine" id="cb4-31" data-line-number="31"></a>
-<a class="sourceLine" id="cb4-32" data-line-number="32">lr_accuracy </a>
-<a class="sourceLine" id="cb4-33" data-line-number="33">rf_accuracy </a>
-<a class="sourceLine" id="cb4-34" data-line-number="34">sv_accuracy </a></code></pre></div>
+<a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co"># specify models</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">lr <span class="op">=</span> LogisticRegression()</a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">rf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_depth<span class="op">=</span><span class="dv">30</span>, class_weight<span class="op">=</span><span class="st">&#39;balanced&#39;</span>)</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">sv <span class="op">=</span> svm.SVC(kernel<span class="op">=</span><span class="st">&#39;rbf&#39;</span>)</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"><span class="co"># fit models</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17">lr.fit(x_train, y_train)</a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">rf.fit(x_train, y_train)</a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">sv.fit(x_train, y_train)</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"><span class="co"># predict test set labels</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22">lr_pred <span class="op">=</span> lr.predict(x_test)</a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">rf_pred <span class="op">=</span> rf.predict(x_test)</a>
+<a class="sourceLine" id="cb4-24" data-line-number="24">sv_pred <span class="op">=</span> sv.predict(x_test)</a>
+<a class="sourceLine" id="cb4-25" data-line-number="25"></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="co"># evaluate model accuracies</span></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27">lr_accuracy <span class="op">=</span> accuracy_score(y_test, lr_pred)</a>
+<a class="sourceLine" id="cb4-28" data-line-number="28">rf_accuracy <span class="op">=</span> accuracy_score(y_test, rf_pred)</a>
+<a class="sourceLine" id="cb4-29" data-line-number="29">sv_accuracy <span class="op">=</span> accuracy_score(y_test, sv_pred)</a>
+<a class="sourceLine" id="cb4-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb4-31" data-line-number="31">lr_accuracy </a>
+<a class="sourceLine" id="cb4-32" data-line-number="32">rf_accuracy </a>
+<a class="sourceLine" id="cb4-33" data-line-number="33">sv_accuracy </a></code></pre></div>
 </div>
 <div id="results" class="slide section level1">
 <h1>Results</h1>
 <p>Logistic Regression Accuracy Score:</p>
 <ul>
-<li>0.9404761904761905</li>
+<li>0.6761463844797179</li>
 </ul>
 <p>Random Forest Accuracy Score:</p>
 <ul>
-<li>0.9971340388007055</li>
+<li>0.859347442680776</li>
 </ul>
 <p>Support Vector Machine Accuracy Score:</p>
 <ul>
 <li>0.13734567901234568</li>
 </ul>
 </div>
-<div id="deeper-into-a-model" class="slide section level1">
-<h1>Deeper Into a Model</h1>
+<div id="testing-a-model-with-select-variables" class="slide section level1">
+<h1>Testing a Model with Select Variables</h1>
 <p>Random Forest!</p>
-<p>Added other variables to the model:</p>
+<p>Changed variables in the model:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb5-1" data-line-number="1">df <span class="op">=</span> pd.read_csv(<span class="st">&#39;train.csv&#39;</span>)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb5-3" data-line-number="3">x <span class="op">=</span> df[[<span class="st">&#39;Elevation&#39;</span>, <span class="st">&#39;Id&#39;</span>, <span class="st">&#39;Aspect&#39;</span>, <span class="st">&#39;Slope&#39;</span>, <span class="st">&#39;Horizontal_Distance_To_Hydrology&#39;</span>, <span class="st">&#39;Vertical_Distance_To_Hydrology&#39;</span>, <span class="st">&#39;Hillshade_9am&#39;</span>, <span class="st">&#39;Hillshade_Noon&#39;</span>, <span class="st">&#39;Hillshade_3pm&#39;</span>]]</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">x <span class="op">=</span> df[[<span class="st">&#39;Elevation&#39;</span>, <span class="st">&#39;Aspect&#39;</span>, <span class="st">&#39;Slope&#39;</span>, <span class="st">&#39;Horizontal_Distance_To_Hydrology&#39;</span>, <span class="st">&#39;Vertical_Distance_To_Hydrology&#39;</span>, <span class="st">&#39;Hillshade_9am&#39;</span>, <span class="st">&#39;Hillshade_Noon&#39;</span>, <span class="st">&#39;Hillshade_3pm&#39;</span>]]</a>
 <a class="sourceLine" id="cb5-4" data-line-number="4">y <span class="op">=</span> df[<span class="st">&#39;Cover_Type&#39;</span>]</a>
 <a class="sourceLine" id="cb5-5" data-line-number="5"></a>
 <a class="sourceLine" id="cb5-6" data-line-number="6">x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, test_size<span class="op">=</span><span class="fl">0.4</span>, random_state<span class="op">=</span><span class="dv">24</span>)</a>
@@ -263,20 +262,18 @@ Cara, Jacob, Lorenzo
 <a class="sourceLine" id="cb5-10" data-line-number="10">rf_accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</a>
 <a class="sourceLine" id="cb5-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb5-12" data-line-number="12">rf_accuracy</a></code></pre></div>
-<p>New Accuracy Score with 9 variables:</p>
+<p>New Accuracy Score with only 8 variables:</p>
 <ul>
 <li>0.7908399470899471</li>
 </ul>
+<p>Not as good of a model!</p>
 </div>
 <div id="next-steps" class="slide section level1">
 <h1>Next Steps</h1>
 <p>Still have to troubleshoot and hone our models</p>
 <p>Try different variables</p>
-<ul>
-<li>Use soil types alone</li>
-<li>Try combinations of variables</li>
-</ul>
-<p>Add confusion matrix</p>
+<p>Try combinations of variables</p>
+<p>Generate confusion matrix</p>
 <p>Need to use the test set on Kaggle and see how well our model preforms!</p>
 </div>
 <div id="questions" class="slide section level1">
