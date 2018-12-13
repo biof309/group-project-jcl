@@ -182,6 +182,63 @@ Cara, Jacob, Lorenzo
 <div id="machine-learning-with-scikitlearn" class="slide section level1">
 <h1>Machine Learning with SciKitLearn</h1>
 <p>Decided to try to use SciKitLearn</p>
+<p>Wanted to try multiple different classification models as this is a supervised learning project</p>
+<p>Logistic regression, random forrest, support vector machine, k nearest neighbor</p>
+</div>
+<div id="start-by-importing-all-of-the-necessary-packages" class="slide section level1">
+<h1>Start by importing all of the necessary packages</h1>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="im">import</span> pandas <span class="im">as</span> pd</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, accuracy_score</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="im">from</span> sklearn <span class="im">import</span> svm</a></code></pre></div>
+</div>
+<div id="next-test-multiple-models" class="slide section level1">
+<h1>Next test multiple models</h1>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><a class="sourceLine" id="cb4-1" data-line-number="1">df <span class="op">=</span> pd.read_csv(<span class="st">&#39;train.csv&#39;</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">x <span class="op">=</span> df.copy()</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">x <span class="op">=</span> x.drop(<span class="st">&#39;Cover_Type&#39;</span>, axis <span class="op">=</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">x <span class="op">=</span> x.drop(<span class="st">&#39;Elevation&#39;</span>, axis <span class="op">=</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">x <span class="op">=</span> x.drop(<span class="st">&#39;Elevation&#39;</span>, axis <span class="op">=</span> <span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">y <span class="op">=</span> df[<span class="st">&#39;Cover_Type&#39;</span>]</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">x_train, x_test, y_train, y_test <span class="op">=</span> train_test_split(x, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">21</span>)</a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co"># specify models</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13">lr <span class="op">=</span> LogisticRegression()</a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">rf <span class="op">=</span> RandomForestClassifier(n_estimators<span class="op">=</span><span class="dv">1000</span>, max_depth<span class="op">=</span><span class="dv">30</span>, class_weight<span class="op">=</span><span class="st">&#39;balanced&#39;</span>)</a>
+<a class="sourceLine" id="cb4-15" data-line-number="15">sv <span class="op">=</span> svm.SVC(kernel<span class="op">=</span><span class="st">&#39;rbf&#39;</span>)</a>
+<a class="sourceLine" id="cb4-16" data-line-number="16"></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="co"># fit models</span></a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">lr.fit(x_train, y_train)</a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">rf.fit(x_train, y_train)</a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">sv.fit(x_train, y_train)</a>
+<a class="sourceLine" id="cb4-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co"># predict test set labels</span></a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">lr_pred <span class="op">=</span> lr.predict(x_test)</a>
+<a class="sourceLine" id="cb4-24" data-line-number="24">rf_pred <span class="op">=</span> rf.predict(x_test)</a>
+<a class="sourceLine" id="cb4-25" data-line-number="25">sv_pred <span class="op">=</span> sv.predict(x_test)</a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb4-27" data-line-number="27"><span class="co"># evaluate model accuracies</span></a>
+<a class="sourceLine" id="cb4-28" data-line-number="28">lr_accuracy <span class="op">=</span> accuracy_score(y_test, lr_pred)</a>
+<a class="sourceLine" id="cb4-29" data-line-number="29">rf_accuracy <span class="op">=</span> accuracy_score(y_test, rf_pred)</a>
+<a class="sourceLine" id="cb4-30" data-line-number="30">sv_accuracy <span class="op">=</span> accuracy_score(y_test, sv_pred)</a>
+<a class="sourceLine" id="cb4-31" data-line-number="31"></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32">lr_accuracy </a>
+<a class="sourceLine" id="cb4-33" data-line-number="33">rf_accuracy </a>
+<a class="sourceLine" id="cb4-34" data-line-number="34">sv_accuracy </a></code></pre></div>
+</div>
+<div id="results" class="slide section level1">
+<h1>Results</h1>
+<p>Logistic Regression Accuracy Score:</p>
+<p>Out[73]: 0.9404761904761905</p>
+<p>Random Forest Accuracy Score:</p>
+<p>Out[74]: 0.9971340388007055</p>
+<p>Support Vector Machine Accuracy Score: Out[75]: 0.13734567901234568</p>
 </div>
 </body>
 </html>

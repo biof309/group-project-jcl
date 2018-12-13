@@ -150,3 +150,50 @@ ct = df[['Cover_Type']]
 elevation = df[['Elevation']]
 corr_1 = np.corrcoef(ct, elevation)
 corr_1
+
+
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import metrics
+df = pd.read_csv('train.csv')
+
+df.info()
+df.copy()
+df.describe()
+x=x.drop('Elevation', 'Id', 'Aspect', 'Slope', 'Horizontal_Distance_To_Hydrology', 'Vertical_Distance_To_Hydrology', 'Hillshade_9am', 'Hillshade_Noon', 'Hillshade_3pm', axis = 1)
+y=df['Cover_Type'
+
+
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=21)
+
+
+# specify models
+lr = LogisticRegression()
+rf = RandomForestClassifier(n_estimators=1000, max_depth=30, class_weight='balanced')
+sv = svm.SVC(kernel='rbf')
+
+# fit models
+lr.fit(x_train, y_train)
+rf.fit(x_train, y_train)
+sv.fit(x_train, y_train)
+
+# predict test set labels
+lr_pred = lr.predict(x_test)
+rf_pred = rf.predict(x_test)
+sv_pred = sv.predict(x_test)
+
+# evaluate model accuracies
+lr_accuracy = accuracy_score(y_test, lr_pred)
+rf_accuracy = accuracy_score(y_test, rf_pred)
+sv_accuracy = accuracy_score(y_test, sv_pred)
+
+lr_accuracy
+rf_accuracy
+sv_accuracy

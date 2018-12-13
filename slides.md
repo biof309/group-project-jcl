@@ -102,3 +102,68 @@ NEED TO ADD THE GRAPHS HERE BUT IDK HOW
 
 Decided to try to use SciKitLearn
 
+Wanted to try multiple different classification models as this is a supervised learning project
+
+Logistic regression, random forrest, support vector machine, k nearest neighbor
+
+# Start by importing all of the necessary packages
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
+from sklearn.ensemble import RandomForestClassifier
+from sklearn import svm
+```
+
+# Next test multiple models
+```python
+df = pd.read_csv('train.csv')
+x = df.copy()
+x = x.drop('Cover_Type', axis = 1)
+x = x.drop('Elevation', axis = 1)
+x = x.drop('Elevation', axis = 1)
+
+y = df['Cover_Type']
+
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.3, random_state=21)
+
+
+# specify models
+lr = LogisticRegression()
+rf = RandomForestClassifier(n_estimators=1000, max_depth=30, class_weight='balanced')
+sv = svm.SVC(kernel='rbf')
+
+# fit models
+lr.fit(x_train, y_train)
+rf.fit(x_train, y_train)
+sv.fit(x_train, y_train)
+
+# predict test set labels
+lr_pred = lr.predict(x_test)
+rf_pred = rf.predict(x_test)
+sv_pred = sv.predict(x_test)
+
+# evaluate model accuracies
+lr_accuracy = accuracy_score(y_test, lr_pred)
+rf_accuracy = accuracy_score(y_test, rf_pred)
+sv_accuracy = accuracy_score(y_test, sv_pred)
+
+lr_accuracy 
+rf_accuracy 
+sv_accuracy 
+```
+
+# Results
+
+Logistic Regression Accuracy Score: 
+
+Out[73]: 0.9404761904761905
+
+Random Forest Accuracy Score:
+
+Out[74]: 0.9971340388007055
+
+Support Vector Machine Accuracy Score:
+Out[75]: 0.13734567901234568

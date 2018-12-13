@@ -12,7 +12,7 @@ df.info()
 
 x = df.copy()
 x = x.drop('Cover_Type', axis = 1)
-x = x.drop('Id', axis = 1)
+x = x.drop('Elevation', axis = 1)
 
 y = df['Cover_Type']
 
@@ -39,6 +39,6 @@ lr_accuracy = accuracy_score(y_test, lr_pred)
 rf_accuracy = accuracy_score(y_test, rf_pred)
 sv_accuracy = accuracy_score(y_test, sv_pred)
 
-lr_accuracy # 67%
-rf_accuracy # 86%
-sv_accuracy # 14% !!!
+lr_accuracy
+rf_accuracy
+sv_accuracy
